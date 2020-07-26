@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+	<title>Student List</title>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	  <script src="http://localhost:8080/api/students" crossorigin="anonymous"></script>
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  
+	  <script>
+	  $(document).ready(function(){
+			$('.dropdown-trigger').dropdown();
+			$(document).ready(function(){
+				$('select').formSelect();
+			});
+	  });
+			
+	  </script>
+	  <script>
+	  $(document).ready(function () {
+		$("#addbtn").click(function(){
+		$.get("http://localhost:8080/api/students",function(data,status){
+		console.log(data);
+		});
+		});
+	  });
+	  </script>
+    </head>
+
+    <body>
+		<section class="section container" id = "student">
+		<div class="row">
+		  <div class="col s12 s15">
+			<button class="btn waves-effect waves-light right" type="submit" id="addbtn">Add Student<i class="material-icons right">add</i>
+			</button>
+		    <h5 class="indigo-text text-darken-4">Student's List</h5>
+			<table class="highlight" id="student_tbl">
+				<thead>
+					<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Course Id</th>
+					<th>Registered</th>
+					</tr>
+				</thead>
+				<tbody id="tdata">
+				</tbody>
+			</table>
+		  </div>
+		</div></section>
+	    
+      <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	  <script src = "http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer ></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </body>
+  </html>
